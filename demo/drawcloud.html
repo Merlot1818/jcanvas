@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      background-color: #148;
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      user-select: none;
+      color: #fff;
+    }
+
+    h1 {
+      margin: 0;
+      margin-top: 10px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    canvas {
+      background-color: #fff;
+      border: solid 1px #000;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <script src="./libs/jquery.min.js"></script>
+  <script src="../dist/jcanvas.js"></script>
+  <script>
+    (function ($) {
+      $(document).ready(function () {
+        var $canvas = $('#canvas');
+        var $cursorCoords = $('#cursor-coords');
+        var canvasWidth = $canvas.width();
+        var canvasHeight = $canvas.height();
+
+        var translateX = 0;
+        var translateY = 0;
+        var scale = 1;
+
+        var startX;
+        var startY;
+        var isMousedown;
+        var isPanning;
+        var shapeSize = 100;
+        var nearestAmount = shapeSize / 4;
+
+        function drawShapes() {
+          $canvas.drawRect({
+            layer: true,
+            opacity: 0.5,
+            fillStyle: '#6c3',
+            x: 200, y: 200,
+            width: shapeSize, height: shapeSize
+          });
+
+          $('canvas').drawCloud({
+            fillStyle: '#c33',
+            x: 150, y: 100,
+            width: 200, height: 100
+          });
+        }
+        drawShapes();
+      });
+    }(jQuery));
+
+  </script>
+</body>
+
+</html>
